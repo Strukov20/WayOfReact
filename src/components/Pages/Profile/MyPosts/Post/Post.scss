@@ -1,0 +1,21 @@
+.posts {
+  &__item {
+    display: flex;
+    padding: 30px 30px;
+    background-color: #61dafb;
+    border-radius: 20px;
+    margin: 10px 0;
+    & img {
+      width: 70px;
+      border-radius: 100%;
+    }
+    &_desc {
+      margin: auto 30px;
+    }
+    & button {
+      margin: auto 0 auto auto;
+      width: 80px;
+      height: 30px;
+    }
+  }
+}
