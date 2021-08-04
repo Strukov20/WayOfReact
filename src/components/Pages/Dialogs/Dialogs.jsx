@@ -1,34 +1,35 @@
 import React from "react";
 import './Dialogs.scss'
-import styles from '../../ActiveLinks.module.scss'
 import Message from "./Message/Message";
-import {NavLink} from "react-router-dom";
+import DialogItem from "./DialogItem/DialogItem";
 
-function Dialogs(props) {
+
+function Dialogs() {
+    const dialogsData = [
+        {id: 1, name: 'Bohdan'},
+        {id: 2, name: 'Petro'},
+        {id: 3, name: 'Vasyl'},
+        {id: 4, name: 'Sofi'},
+        {id: 5, name: 'Ivan'}
+    ]
+    const messageData = [
+        {id: 1, message: 'Hello'},
+        {id: 2, message: 'I learn React'},
+        {id: 3, message: 'How are you?'},
+        {id: 4, message: 'Good Morning'},
+        {id: 5, message: 'I am fine'}
+    ]
+    const dialogsElements = dialogsData.map((dialog) => <DialogItem name={dialog.name} id={dialog.id}/>);
+    const messagesElements = messageData.map((message) => <Message message={message.message} id={message.id}/>);
+
     return (
         <div className='dialogs'>
             <div className="dialogs__items">
-                <div  className="dialogs__item">
-                    <NavLink activeClassName={styles.activeLinkDialog} to='/dialogs/1'>Bohdan</NavLink>
-                </div>
-                <div className="dialogs__item">
-                    <NavLink activeClassName={styles.activeLinkDialog} to='/dialogs/2'>Ivan</NavLink>
-                </div>
-                <div className="dialogs__item">
-                    <NavLink activeClassName={styles.activeLinkDialog} to='/dialogs/3'>Oksanka</NavLink>
-                </div>
-                <div className="dialogs__item">
-                    <NavLink activeClassName={styles.activeLinkDialog} to='/dialogs/4'>Petro</NavLink>
-                </div>
-                <div className="dialogs__item">
-                    <NavLink activeClassName={styles.activeLinkDialog} to='/dialogs/5'>Mykola</NavLink>
-                </div>
+                {dialogsElements}
             </div>
             <hr/>
             <div className="messages">
-                <Message />
-                <Message />
-                <Message />
+                {messagesElements}
             </div>
 
         </div>

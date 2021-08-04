@@ -1,7 +1,7 @@
 import React from "react";
 import './Post.scss'
 
-function Post( props) {
+function Post( props ) {
     return (
         <div className='posts'>
             <div className='posts__item'>
