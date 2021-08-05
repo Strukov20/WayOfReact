@@ -1,9 +1,14 @@
 import React from "react";
 import './Navbar.scss'
+import './Sidebar/Sidebar.scss'
 import styles from '../ActiveLinks.module.scss'
 import {NavLink} from "react-router-dom";
+import Sidebar from "./Sidebar/Sidebar";
 
-function Navbar() {
+function Navbar(props) {
+
+    const sidebar = props.sidebarData.map((sidebar) => <Sidebar img={sidebar.img} name={sidebar.name} key={sidebar.id}/>)
+
     return (
         <nav className='nav'>
             <div className='nav__items'>
@@ -25,6 +30,10 @@ function Navbar() {
             <div className='nav__items'>
                 <img src="" alt=""/>
                 <NavLink activeClassName={styles.activeLinkNav} className='nav__item' to="/settings">Settings</NavLink>
+            </div>
+            <div className='sidebar'>
+                <div className='sidebar__title'>FRIENDS</div>
+                {sidebar}
             </div>
         </nav>
     );

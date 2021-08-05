@@ -4,23 +4,17 @@ import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 
 
-function Dialogs() {
-    const dialogsData = [
-        {id: 1, name: 'Bohdan'},
-        {id: 2, name: 'Petro'},
-        {id: 3, name: 'Vasyl'},
-        {id: 4, name: 'Sofi'},
-        {id: 5, name: 'Ivan'}
-    ]
-    const messageData = [
-        {id: 1, message: 'Hello'},
-        {id: 2, message: 'I learn React'},
-        {id: 3, message: 'How are you?'},
-        {id: 4, message: 'Good Morning'},
-        {id: 5, message: 'I am fine'}
-    ]
-    const dialogsElements = dialogsData.map((dialog) => <DialogItem name={dialog.name} id={dialog.id}/>);
-    const messagesElements = messageData.map((message) => <Message message={message.message} id={message.id}/>);
+function Dialogs(props) {
+
+    const dialogsElements = props.dialogsData.map((dialog) => <DialogItem name={dialog.name} id={dialog.id} key={dialog.key}/>);
+    const messagesElements = props.messageData.map((message) => <Message message={message.message} key={message.id} isMe={message.isMe}/>);
+
+    const newMessage = React.createRef();
+
+    const sendMessage = () => {
+        const message = newMessage.current.value;
+        alert(message)
+    }
 
     return (
         <div className='dialogs'>
@@ -30,8 +24,11 @@ function Dialogs() {
             <hr/>
             <div className="messages">
                 {messagesElements}
+                <div className="message-send">
+                    <input ref={newMessage} type="text" placeholder='Type your message...'/>
+                    <button onClick={sendMessage}>Send</button>
+                </div>
             </div>
-
         </div>
     );
 }

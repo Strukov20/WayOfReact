@@ -3,7 +3,8 @@ import './Profile.scss'
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-function Profile() {
+function Profile(props) {
+
     return (
         <div className="profile">
             <div className='profile__top'>
@@ -11,7 +12,7 @@ function Profile() {
             </div>
             <ProfileInfo/>
             <hr/>
-            <MyPosts/>
+            <MyPosts postsData={props.postsData}/>
         </div>
     );
 }
