@@ -8,11 +8,14 @@ function Profile(props) {
     return (
         <div className="profile">
             <div className='profile__top'>
-                <img src="https://w-dog.ru/wallpapers/10/6/313995315018303.jpg" alt="top_photo"/>
+                <img src="https://persha.ua/wp-content/uploads/2021/02/twitter-reklama-1600x400-pyks-5.jpeg" alt="top_photo"/>
             </div>
             <ProfileInfo/>
             <hr/>
-            <MyPosts postsData={props.postsData}/>
+            <MyPosts postsData={props.profilePage.postsData}
+                     newPostText={props.profilePage.newPostText}
+                     addPost={props.addPost}
+                     updateNewPostText={props.updateNewPostText}/>
         </div>
     );
 }

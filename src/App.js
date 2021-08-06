@@ -19,7 +19,9 @@ function App (props) {
                   <Navbar sidebarData={props.appState.sideBar} />
                   <div className='pages'>
                       <Route path='/profile'
-                             render={ () => <Profile postsData={props.appState.profilePage.postsData} /> } />
+                             render={ () => <Profile profilePage={props.appState.profilePage}
+                                                     addPost={props.addPost}
+                                                     updateNewPostText={props.updateNewPostText}/> } />
                       <Route path='/dialogs'
                              render={ () => <Dialogs dialogsData={props.appState.dialogsPage.dialogsData}
                                                      messageData={props.appState.dialogsPage.messageData} /> } />
