@@ -1,10 +1,9 @@
 import React from "react";
 import './Profile.scss'
-import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 function Profile(props) {
-
     return (
         <div className="profile">
             <div className='profile__top'>
@@ -12,9 +11,7 @@ function Profile(props) {
             </div>
             <ProfileInfo/>
             <hr/>
-            <MyPosts postsData={props.profilePage.postsData}
-                     newPostText={props.profilePage.newPostText}
-                     dispatch={props.dispatch}/>
+            <MyPostsContainer store={props.store}/>
         </div>
     );
 }

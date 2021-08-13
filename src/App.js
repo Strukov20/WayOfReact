@@ -2,25 +2,24 @@ import React from 'react'
 import './App.css';
 import {Route} from "react-router-dom";
 import Header from "./components/Header/Header";
-import Navbar from "./components/Navigation/Navbar";
 import Profile from "./components/Pages/Profile/Profile";
-import Dialogs from "./components/Pages/Dialogs/Dialogs";
 import News from "./components/Pages/News/News";
 import Music from "./components/Pages/Music/Music";
 import Settings from "./components/Pages/Settings/Settings";
+import DialogsContainer from "./components/Pages/Dialogs/DialogsContainer";
+import NavbarContainer from "./components/Navigation/NavbarContainer";
 
 function App (props) {
-
   return (
     <div className="main-app">
         <Header />
         <div className='down-block'>
-            <Navbar sidebarData={props.appState.sideBar} />
+            <NavbarContainer store={props.store.getState()} />
             <div className='pages'>
                 <Route path='/profile'
-                       render={ () => <Profile profilePage={props.appState.profilePage} dispatch={props.dispatch}/> } />
+                       render={ () => <Profile store={props.store}/> } />
                 <Route path='/dialogs'
-                       render={ () => <Dialogs dialogsPage={props.appState.dialogsPage} dispatch={props.dispatch}/> } />
+                       render={ () => <DialogsContainer store={props.store}/> } />
                 <Route path='/news' component={News} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />

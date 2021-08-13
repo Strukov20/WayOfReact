@@ -4,6 +4,7 @@ import dialogReducer from "./Reducers/dialogs-reducer";
 import sidebarReducer from "./Reducers/sidebar-reducer";
 
 const store = {
+
     _callSubscriber() { console.log('state was changed') },
     _state: {
         dialogsPage: {
