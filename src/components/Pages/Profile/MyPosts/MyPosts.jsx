@@ -1,26 +1,24 @@
 import React from "react";
 import './MyPosts.scss'
 import Post from "./Post/Post";
-import {addPostAC, updateNewPostTextAC} from "../../../../Redux/state";
+import {addPostAC, updateNewPostTextAC} from "../../../../Redux/Reducers/profile-reducer";
 
 function MyPosts(props) {
 
     const postsElements = props.postsData.map((post) => <Post key={post.id} message={post.message} likeCounts={post.likes}/>)
 
-    const newPostElement = React.createRef();
     const addPost = () => {
         props.dispatch(addPostAC());
     }
-    const onPostChange = () => {
-        let text = newPostElement.current.value;
+    const onPostChange = (e) => {
+        let text = e.target.value;
         props.dispatch(updateNewPostTextAC(text))
     }
 
     return (
         <div className='posts'>
             <div className="posts_share">
-                <input ref={newPostElement}
-                       onChange={onPostChange}
+                <input onChange={onPostChange}
                        type="text"
                        placeholder='Type your post...'
                        value={props.newPostText}/>
