@@ -9,17 +9,17 @@ import Settings from "./components/Pages/Settings/Settings";
 import DialogsContainer from "./components/Pages/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navigation/NavbarContainer";
 
-function App (props) {
+function App () {
   return (
     <div className="main-app">
         <Header />
         <div className='down-block'>
-            <NavbarContainer store={props.store.getState()} />
+            <NavbarContainer  />
             <div className='pages'>
                 <Route path='/profile'
-                       render={ () => <Profile store={props.store}/> } />
+                       render={ () => <Profile/> } />
                 <Route path='/dialogs'
-                       render={ () => <DialogsContainer store={props.store}/> } />
+                       render={ () => <DialogsContainer/> } />
                 <Route path='/news' component={News} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />

@@ -11,7 +11,7 @@ function Profile(props) {
             </div>
             <ProfileInfo/>
             <hr/>
-            <MyPostsContainer store={props.store}/>
+            <MyPostsContainer/>
         </div>
     );
 }

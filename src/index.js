@@ -3,12 +3,17 @@ import ReactDOM from "react-dom";
 import React from "react";
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "./StoreContext";
 
 
-const rerenderEntireTree = (state) => {
+const rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App store={store}/>
+            <Provider store={store}>
+                {
+                    <App />
+                }
+            </Provider>
         </BrowserRouter>, document.getElementById('root')
     );
 }

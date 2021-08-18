@@ -7,7 +7,12 @@ const initialState = {
         {key: 2, id: 2, name: 'Petro'},
         {key: 3, id: 3, name: 'Vasyl'},
         {key: 4, id: 4, name: 'Sofi'},
-        {key: 5, id: 5, name: 'Ivan'}
+        {key: 5, id: 5, name: 'Ivan'},
+        {key: 6, id: 6, name: '1'},
+        {key: 7, id: 7, name: '2'},
+        {key: 8, id: 8, name: '3'},
+        {key: 9, id: 9, name: '4'},
+        {key: 10, id: 10, name: '5'}
     ],
     messageData: [
         {id: 1, message: 'Hello', isMe: true},
