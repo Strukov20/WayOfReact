@@ -3,8 +3,7 @@ import './MyPosts.scss'
 import Post from "./Post/Post";
 
 function MyPosts(props) {
-    debugger;
-    const postsElements = props.posts.map((post) => <Post key={post.id} message={post.message} likeCounts={post.likes}/>)
+    const postsElements = props.profilePage.postsData.map((post) => <Post key={post.id} message={post.message} likeCounts={post.likes}/>)
 
     const onAddPost = () => {
         props.addPost();
@@ -20,7 +19,7 @@ function MyPosts(props) {
                 <input onChange={onPostChange}
                        type="text"
                        placeholder='Type your post...'
-                       value={props.newPostText}/>
+                       value={props.profilePage.newPostText}/>
                 <button onClick={onAddPost}>Share</button>
             </div>
             {postsElements}

@@ -15,11 +15,11 @@ const initialState = {
         {key: 10, id: 10, name: '5'}
     ],
     messageData: [
-        {id: 1, message: 'Hello', isMe: true},
-        {id: 2, message: 'I learn React', isMe: false},
-        {id: 3, message: 'How are you?', isMe: true},
-        {id: 4, message: 'Good Morning', isMe: false},
-        {id: 5, message: 'I am fine', isMe: true}
+        {id: 1, message: 'Hello', isMe: true, avatar: 'https://cdn.iconscout.com/icon/free/png-256/account-avatar-profile-human-man-user-30448.png'},
+        {id: 2, message: 'I learn React', isMe: false, avatar: 'https://image.flaticon.com/icons/png/512/194/194938.png'},
+        {id: 3, message: 'How are you?', isMe: true, avatar: 'https://cdn.iconscout.com/icon/free/png-256/account-avatar-profile-human-man-user-30448.png'},
+        {id: 4, message: 'Good Morning', isMe: false, avatar: 'https://image.flaticon.com/icons/png/512/194/194938.png'},
+        {id: 5, message: 'I am fine', isMe: true, avatar: 'https://cdn.iconscout.com/icon/free/png-256/account-avatar-profile-human-man-user-30448.png'}
     ],
     newMessageText: ''
 }
@@ -27,18 +27,26 @@ const initialState = {
 const dialogReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_MESSAGE:
+        case ADD_MESSAGE: {
             let newMessage = {
                 id: 5,
                 message: state.newMessageText,
-                isMe: true
+                isMe: true,
+                avatar: state.messageData.avatar
             }
-            state.messageData.push(newMessage);
-            state.newMessageText = '';
-            return state;
-        case UPDATE_NEW_MESSAGE:
+            const stateCopy = {...state}
+            stateCopy.messageData = [...state.messageData]
+            stateCopy.messageData.push(newMessage);
+            stateCopy.newMessageText = '';
+            return stateCopy;
+        }
+        case UPDATE_NEW_MESSAGE: {
+            const stateCopy = {...state}
+            stateCopy.messageData = [...state.messageData]
             state.newMessageText = action.newMessage;
-            return state;
+            return stateCopy;
+        }
+
         default:
             return state;
     }
