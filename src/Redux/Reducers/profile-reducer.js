@@ -1,3 +1,5 @@
+import {randomValue} from "../redux-store";
+
 const ADD_POST = 'ADD-POST',
       UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
@@ -14,21 +16,22 @@ export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
-                id: 5,
+                id: randomValue(1000),
                 message: state.newPostText,
-                likes: 3
+                likes: randomValue(300)
             }
-            let stateCopy = {...state}
-
-            stateCopy.postsData.push(newPost);
-            stateCopy.newPostText = '';
-            return stateCopy;
+            return {
+                ...state,
+                postsData: [...state.postsData, newPost],
+                newPostText: ''
+            }
         }
         case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state}
-            stateCopy.postsData = [...state.postsData]
-            stateCopy.newPostText = action.newText;
-            return stateCopy;
+            return {
+                ...state,
+                postsData: [...state.postsData],
+                newPostText: action.newText
+            }
         }
         default:
             return state;

@@ -38,8 +38,18 @@
 .pages {
   display: inline-block;
   width: 100%;
-  height: 760px;
   margin: 15px;
+  padding: 10px 0 40px 0;
+}
+
+.pageName {
+  background-color: #61dafb;
+  width: 100%;
+  height: 50px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 @keyframes App-logo-spin {

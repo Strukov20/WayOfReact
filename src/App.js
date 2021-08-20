@@ -8,6 +8,7 @@ import Music from "./components/Pages/Music/Music";
 import Settings from "./components/Pages/Settings/Settings";
 import DialogsContainer from "./components/Pages/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navigation/NavbarContainer";
+import UsersContainer from "./components/Pages/FindUsers/UsersContainer";
 
 function App () {
   return (
@@ -16,13 +17,12 @@ function App () {
         <div className='down-block'>
             <NavbarContainer  />
             <div className='pages'>
-                <Route path='/profile'
-                       render={ () => <Profile/> } />
-                <Route path='/dialogs'
-                       render={ () => <DialogsContainer/> } />
-                <Route path='/news' component={News} />
-                <Route path='/music' component={Music} />
-                <Route path='/settings' component={Settings} />
+                <Route path='/profile' render={ () => <Profile/> } />
+                <Route path='/dialogs' render={ () => <DialogsContainer/> } />
+                <Route path='/news' render={ () => <News/> } />
+                <Route path='/music' render={ () => <Music/> } />
+                <Route path='/friends' render={ () => <UsersContainer/> } />
+                <Route path='/settings' render={ () => <Settings/> } />
             </div>
         </div>
     </div>
