@@ -1,0 +1,72 @@
+.userInfo {
+  display: flex;
+  padding: 20px 30px;
+  &_avatar__button {
+    display: block;
+    width: 150px;
+    text-align: center;
+    & img {
+      width: 60px;
+      border-radius: 100%;
+      padding: 15px 0;
+    }
+    &_floating-button {
+      text-decoration: none;
+      display: inline-block;
+      width: 130px;
+      height: 40px;
+      border-radius: 45px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 3px;
+      font-weight: 600;
+      color: #524f4e;
+      background: white;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+      transition: .3s;
+      &:hover {
+        background: #61dafb;
+        box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+        color: white;
+        transform: translateY(-7px);
+      }
+    }
+  }
+  &_item {
+    width: 100%;
+    height: 90%;
+    margin: auto 0 auto 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 30px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    &_desc {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      &_username {
+        font-size: 30px;
+        font-weight: bold;
+        padding: 10px;
+      }
+      &_status {
+        padding: 10px;
+        font-size: 20px;
+        font-style: italic;
+      }
+    }
+    &_city {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: bold;
+    }
+  }
+}
+
