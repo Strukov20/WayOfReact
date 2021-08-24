@@ -16,23 +16,27 @@ function Dialogs(props) {
     }
 
     return (
-        <div className='dialogs'>
-            <div className="dialogs__items">
-                {dialogsElements}
-            </div>
-            <hr/>
-            <div className="messages">
-                {messagesElements}
-                <div className="message-send">
-                    <input onChange={onMessageChange}
-                           type="text"
-                           placeholder='Type your message...'
-                           value={props.dialogsPage.newMessageText}
-                    />
-                    <button onClick={sendMessage}>Send</button>
+        <>
+            <div className='pageName'>{props.dialogsPage.pageName}</div>
+            <div className='dialogs'>
+
+                <div className="dialogs__items">
+                    {dialogsElements}
+                </div>
+                <hr/>
+                <div className="messages">
+                    {messagesElements}
+                    <div className="message-send">
+                        <input onChange={onMessageChange}
+                               type="text"
+                               placeholder='Type your message...'
+                               value={props.dialogsPage.newMessageText}
+                        />
+                        <button onClick={sendMessage}>Send</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 export default Dialogs;

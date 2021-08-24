@@ -23,7 +23,8 @@ const initialState = {
         {id: 4, message: 'I learn React', isMe: false, avatar: avatarIsMeF},
         {id: 5, message: 'I am fine', isMe: true, avatar: avatarIsMeT}
     ],
-    newMessageText: ''
+    newMessageText: '',
+    pageName: 'Dialogs'
 }
 
 const dialogReducer = (state = initialState, action) => {

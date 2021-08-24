@@ -9,7 +9,8 @@ let initialState = {
         { id: 2, message:'It is my second post', likes: 45},
         { id: 3, message:'It is my third post', likes: 73}
     ],
-    newPostText: ''
+    newPostText: '',
+    pageName: 'Profile'
 }
 
 export const profileReducer = (state = initialState, action) => {
