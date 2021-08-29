@@ -1,6 +1,7 @@
 import React from "react";
 import './Users.scss';
-const photos = 'https://image.flaticon.com/icons/png/512/194/194938.png'
+import Preloader from "../../common/preloader/preloader";
+import photos from '../../Assets/photos.png'
 
 const Users = (props) => {
     return (
@@ -28,14 +29,16 @@ const Users = (props) => {
                     </div>)
                 }
             </div>
-            <div>
-                <button onClick={() => {props.showMoreUsers()}}>Show next {props.pageSize} users</button>
+            <div className='buttons'>
+                {props.isFetching
+                    ? <Preloader/>
+                    : <button className='buttons_button_SM' onClick={() => {props.showMoreUsers()}}>Show next {props.pageSize} users</button>
+                }
             </div>
 
         </>
 
     )
 }
-
 export default Users;
 
