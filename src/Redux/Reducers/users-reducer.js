@@ -47,7 +47,7 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const followingAC = (userId) => {
+export const following = (userId) => {
     return {
         type: TOGGLE_FOLLOW,
         userId

@@ -9,6 +9,7 @@ import Settings from "./components/Pages/Settings/Settings";
 import DialogsContainer from "./components/Pages/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navigation/NavbarContainer";
 import UsersContainer from "./components/Pages/FindUsers/UsersContainer";
+import ProfileContainer from "./components/Pages/Profile/ProfileContainer";
 
 function App () {
   return (
@@ -17,7 +18,7 @@ function App () {
         <div className='down-block'>
             <NavbarContainer  />
             <div className='pages'>
-                <Route path='/profile' render={ () => <Profile/> } />
+                <Route path='/profile' render={ () => <ProfileContainer/> } />
                 <Route path='/dialogs' render={ () => <DialogsContainer/> } />
                 <Route path='/news' render={ () => <News/> } />
                 <Route path='/music' render={ () => <Music/> } />
