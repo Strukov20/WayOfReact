@@ -1,6 +1,7 @@
 import React from "react";
 import './ProfileInfo.scss'
 import Preloader from "../../../common/preloader/preloader";
+import photos from '../../../Assets/photos.png'
 
 function ProfileInfo(props) {
     if(!props.profile) {
@@ -10,7 +11,7 @@ function ProfileInfo(props) {
     return (
         <div className='profile__info'>
             <div className='profile__avatar'>
-                <img src={props.profile.photos.large} alt="avatar_img"/>
+                <img src={props.profile.photos.large || photos} alt="avatar_img"/>
             </div>
             <div className='profile__desc'>
                 <div className='profile__status'>
@@ -26,7 +27,7 @@ function ProfileInfo(props) {
                     <div className="profile__desc_item_title">Looking for a JOB</div> : <div className="profile__desc_item_subtitle">{props.profile.lookingForAJob ? 'Yes!' : 'No!'}</div>
                 </div>
                 <div className="profile__desc_item">
-                    <div className="profile__desc_item_title">Web-Site</div> : <a href={props.profile.contacts.github} className="profile__desc_item_subtitle">{props.profile.contacts.github}</a>
+                    <div className="profile__desc_item_title">Web-Site</div> : <a href={props.profile.contacts.github} className="profile__desc_item_subtitle">{props.profile.contacts.github || "No information"} </a>
                 </div>
             </div>
         </div>

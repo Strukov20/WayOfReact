@@ -2,7 +2,6 @@ import React from 'react'
 import './App.css';
 import {Route} from "react-router-dom";
 import Header from "./components/Header/Header";
-import Profile from "./components/Pages/Profile/Profile";
 import News from "./components/Pages/News/News";
 import Music from "./components/Pages/Music/Music";
 import Settings from "./components/Pages/Settings/Settings";
@@ -18,7 +17,7 @@ function App () {
         <div className='down-block'>
             <NavbarContainer  />
             <div className='pages'>
-                <Route path='/profile' render={ () => <ProfileContainer/> } />
+                <Route path='/profile/:userId?' render={ () => <ProfileContainer/> } />
                 <Route path='/dialogs' render={ () => <DialogsContainer/> } />
                 <Route path='/news' render={ () => <News/> } />
                 <Route path='/music' render={ () => <Music/> } />
