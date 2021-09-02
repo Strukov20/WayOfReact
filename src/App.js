@@ -1,7 +1,6 @@
 import React from 'react'
 import './App.css';
 import {Route} from "react-router-dom";
-import Header from "./components/Header/Header";
 import News from "./components/Pages/News/News";
 import Music from "./components/Pages/Music/Music";
 import Settings from "./components/Pages/Settings/Settings";
@@ -9,11 +8,12 @@ import DialogsContainer from "./components/Pages/Dialogs/DialogsContainer";
 import NavbarContainer from "./components/Navigation/NavbarContainer";
 import UsersContainer from "./components/Pages/FindUsers/UsersContainer";
 import ProfileContainer from "./components/Pages/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 function App () {
   return (
     <div className="main-app">
-        <Header />
+        <HeaderContainer />
         <div className='down-block'>
             <NavbarContainer  />
             <div className='pages'>

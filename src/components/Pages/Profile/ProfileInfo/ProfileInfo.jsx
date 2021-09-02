@@ -7,7 +7,6 @@ function ProfileInfo(props) {
     if(!props.profile) {
         return <Preloader />
     }
-    debugger;
     return (
         <div className='profile__info'>
             <div className='profile__avatar'>
