@@ -1,7 +1,7 @@
 import React from "react";
 import './ProfileInfo.scss'
 import Preloader from "../../../common/preloader/preloader";
-import photos from '../../../Assets/photos.png'
+import photos from '../../../../Assets/photos.png'
 
 function ProfileInfo(props) {
     if(!props.profile) {

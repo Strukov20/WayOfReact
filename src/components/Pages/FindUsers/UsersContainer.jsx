@@ -3,33 +3,32 @@ import {connect} from "react-redux";
 import {
     following,
     setCurrentPage,
-    setUsers,
+    setUsers, toggleIsDisabled,
     toggleIsFetching
 } from "../../../Redux/Reducers/users-reducer";
 import React, {Component} from "react";
-import * as axios from "axios";
+import {usersAPI} from "../../../API/api";
 
 class UsersAPIContainer extends Component{
-    getUsers = (nextPage) => {
-        this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${nextPage}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(response.data.items)
-            })
-    }
 
     componentDidMount() {
         if (this.props.users.length === 0) {
-            this.getUsers()
+            usersAPI.getUsers()
+                .then(data => {
+                    this.props.toggleIsFetching(false)
+                    this.props.setUsers(data.items)
+                })
         }
-
     }
 
     showMoreUsers = () => {
         let nextPage = this.props.currentPage + 1
         this.props.setCurrentPage(nextPage)
-        this.getUsers(nextPage)
+        usersAPI.getUsers(nextPage)
+            .then(data => {
+                this.props.toggleIsFetching(false)
+                this.props.setUsers(data.items)
+        })
     }
     render() {
         return(
@@ -39,7 +38,9 @@ class UsersAPIContainer extends Component{
                        pageName={this.props.pageName}
                        showMoreUsers={this.showMoreUsers}
                        users={this.props.users}
-                       isFetching={this.props.isFetching}/>
+                       isFetching={this.props.isFetching}
+                       toggleIsDisabled={this.props.toggleIsDisabled}
+                       isDisabled={this.props.isDisabled}/>
             </>
 
         )
@@ -52,7 +53,9 @@ const mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
         pageName: state.usersPage.pageName,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        toggleIsDisabled: state.usersPage.toggleIsDisabled,
+        isDisabled: state.usersPage.isDisabled
     }
 }
 
@@ -61,7 +64,8 @@ const UsersContainer = connect(mapStateToProps,
     following,
     setUsers,
     setCurrentPage,
-    toggleIsFetching
+    toggleIsFetching,
+    toggleIsDisabled
 })(UsersAPIContainer)
 
 export default UsersContainer;

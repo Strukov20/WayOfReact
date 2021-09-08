@@ -2,8 +2,8 @@ import React from "react";
 import logo from '../../logo.svg'
 import './Header.scss'
 import {NavLink} from "react-router-dom";
-import avatar from "../Assets/photos.png";
-import login from "../Assets/login.png";
+import avatar from "../../Assets/photos.png";
+import login from "../../Assets/login.png";
 
 function Header(props) {
     return (
