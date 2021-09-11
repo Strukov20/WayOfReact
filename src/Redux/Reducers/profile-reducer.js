@@ -1,4 +1,5 @@
 import {randomValue} from "../redux-store";
+import {profileAPI} from "../../API/api";
 
 const ADD_POST = 'ADD-POST',
       UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
@@ -76,6 +77,20 @@ export const toggleIsFetching = (isFetching) => {
     return {
         type: TOGGLE_IS_FETCHING,
         isFetching
+    }
+}
+
+// Thunk Creators
+
+export const getUserProfile = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true))
+        profileAPI.getProfile(userId)
+            .then(data => {
+                    dispatch(toggleIsFetching(false))
+                    dispatch(setUsersProfile(data))
+                }
+            )
     }
 }
 

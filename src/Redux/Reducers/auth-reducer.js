@@ -1,3 +1,4 @@
+import {authAPI} from "../../API/api";
 
 const SET_USER_DATA = 'SET_USER_DATA',
     TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
@@ -44,6 +45,22 @@ export const toggleIsFetching = (isFetching) => {
     return {
         type: TOGGLE_IS_FETCHING,
         isFetching
+    }
+}
+
+// Thunk Creators
+
+export const getAuthData = () => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true))
+        authAPI.getAuthData()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(toggleIsFetching(false))
+                    let {id, email, login} = data.data;
+                    dispatch(setUserData(id, email, login))
+                }}
+            )
     }
 }
 

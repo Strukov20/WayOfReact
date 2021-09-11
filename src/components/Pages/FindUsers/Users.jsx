@@ -3,7 +3,6 @@ import './Users.scss';
 import Preloader from "../../common/preloader/preloader";
 import photos from '../../../Assets/photos.png'
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../../API/api";
 
 const Users = (props) => {
     return (
@@ -21,24 +20,10 @@ const Users = (props) => {
                                     <button disabled={props.isDisabled.some(id => id === user.id)} className="userInfo_avatar__button_floating-button"
                                             onClick={() => {
                                                 if (user.followed === false) {
-                                                    props.toggleIsDisabled(true, user.id)
-                                                    usersAPI.followAPI(user.id)
-                                                        .then(data => {
-                                                            if (data.resultCode === 0) {
-                                                                props.following(user.id)
-                                                            }
-                                                            props.toggleIsDisabled(false, user.id)
-                                                        })
+                                                    props.follow(user.id)
                                                 }
                                                 if(user.followed === true){
-                                                    props.toggleIsDisabled(true, user.id)
-                                                    usersAPI.unfollowAPI(user.id)
-                                                        .then(data => {
-                                                            if (data.resultCode === 0) {
-                                                                props.following(user.id)
-                                                            }
-                                                            props.toggleIsDisabled(false, user.id)
-                                                        })
+                                                    props.unfollow(user.id)
                                                 }
                                             }
                                             }>{user.followed ? 'Unfollow' : 'Follow'}</button>

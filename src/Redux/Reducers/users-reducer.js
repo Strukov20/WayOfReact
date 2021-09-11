@@ -1,3 +1,4 @@
+import {usersAPI} from "../../API/api";
 
 const SET_USERS = 'SET_USERS',
     TOGGLE_FOLLOW = 'TOGGLE_FOLLOW',
@@ -20,7 +21,7 @@ const usersReducer = (state = initialState, action) => {
         case TOGGLE_FOLLOW: {
             return {
                 ...state,
-                users: state.users.map((users) => {
+                 users: state.users.map((users) => {
                     if(users.id === action.userId) {
                         return {...users, followed: !users.followed}
                     }
@@ -91,5 +92,59 @@ export const toggleIsDisabled = (isDisabled, userId) => {
         userId
     }
 }
+
+// Thunk Creators
+
+export const getUsers = () => {
+    return (dispatch) => {
+        if (initialState.users.length === 0) {
+            dispatch(toggleIsFetching(true));
+            usersAPI.getUsers()
+                .then(data => {
+                    dispatch(toggleIsFetching(false));
+                    dispatch(setUsers(data.items));
+                })
+        }
+    }
+}
+
+export const onPageChanged = (nextPage) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        dispatch(setCurrentPage(nextPage))
+        usersAPI.getUsers(nextPage)
+            .then(data => {
+                dispatch(toggleIsFetching(false));
+                dispatch(setUsers(data.items));
+            })
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleIsDisabled(true, userId))
+        usersAPI.followAPI(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(following(userId))
+                }
+                dispatch(toggleIsDisabled(false, userId))
+            })
+    }
+}
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleIsDisabled(true, userId))
+        usersAPI.unfollowAPI(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(following(userId))
+                }
+                dispatch(toggleIsDisabled(false, userId))
+            })
+    }
+}
+
 
 export default usersReducer

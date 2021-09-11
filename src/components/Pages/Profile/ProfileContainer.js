@@ -2,20 +2,14 @@ import React, {Component} from "react";
 import './Profile.scss'
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {setUsersProfile, toggleIsFetching} from "../../../Redux/Reducers/profile-reducer";
+import {getUserProfile} from "../../../Redux/Reducers/profile-reducer";
 import {withRouter} from "react-router-dom";
-import {profileAPI} from "../../../API/api";
 
 class ProfileContainer extends Component {
 
     componentDidMount() {
         let userId = this.props.match.params.userId;
-        this.props.toggleIsFetching(true)
-        profileAPI.getUserProfile(userId)
-            .then(data => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsersProfile(data)
-            })
+        this.props.getUserProfile(userId)
     }
 
     render() {
@@ -31,7 +25,4 @@ const mapStateToProps = (state) => {
 
 let ProfileContainerWithRouter = withRouter(ProfileContainer)
 
-export default connect(mapStateToProps, {
-    setUsersProfile,
-    toggleIsFetching
-})(ProfileContainerWithRouter);
+export default connect(mapStateToProps, {getUserProfile })(ProfileContainerWithRouter);
